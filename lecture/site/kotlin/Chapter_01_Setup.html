@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter_01_Setup - MoAI Master Class</title>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            MoAI-ADK Class 🗿
+        </div>
+        <div class="sidebar-content">
+            <div class="nav-group"><div class="nav-group-title">Core Track</div>
+<a href="../../ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="../../Chapter_01_Architecture.html" class="nav-link">Chapter 01 Architecture</a>
+<a href="../../Chapter_02_Skill_Authoring.html" class="nav-link">Chapter 02 Skill Authoring</a>
+<a href="../../Chapter_03_Custom_Agents.html" class="nav-link">Chapter 03 Custom Agents</a>
+<a href="../../Chapter_04_Workflow_Mastery.html" class="nav-link">Chapter 04 Workflow Mastery</a>
+<a href="../../Chapter_05_Personalization.html" class="nav-link">Chapter 05 Personalization</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Kotlin Vibe</div>
+<a href="../../kotlin/ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="../../kotlin/Chapter_01_Setup.html" class="nav-link active">Chapter 01 Setup</a>
+<a href="../../kotlin/Chapter_02_Language_Skill.html" class="nav-link">Chapter 02 Language Skill</a>
+<a href="../../kotlin/Chapter_03_Kotlin_Agent.html" class="nav-link">Chapter 03 Kotlin Agent</a>
+<a href="../../kotlin/Chapter_04_Vibe_Loop.html" class="nav-link">Chapter 04 Vibe Loop</a>
+<a href="../../kotlin/Chapter_05_Capstone.html" class="nav-link">Chapter 05 Capstone</a>
+</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content-wrapper">
+            <h1>Chapter 01: Environment & Tooling</h1>
+
+<h2>🛠️ Preparing the Forge</h2>
+
+Before we can teach the AI, we need to make sure <em>our</em> environment is ready.
+MoAI-ADK relies on the local environment to run tests and linters.
+
+<h3>1. The Essentials</h3>
+
+You need the following tools installed:
+
+<pre><code class="language-bash">&lt;h1&gt;MacOS (using brew)&lt;/h1&gt;
+brew install openjdk kotlin gradle
+</code></pre>
+
+<ul>
+<li><strong>OpenJDK</strong>: The runtime.</li>
+<li><strong>Kotlin</strong>: The compiler (<code>kotlinc</code>).</li>
+<li><strong>Gradle</strong>: The build tool (we'll use Kotlin DSL).</li>
+</ul>
+
+<h3>2. The "Vibe" Tools</h3>
+
+"Vibe Coding" relies on fast feedback loops. For Kotlin, we use:
+
+<ul>
+<li><strong>Ktlint</strong>: For enforcing style (no more bike-shedding on PRs).</li>
+<li><strong>Detekt</strong>: For static analysis (finding bugs before they happen).</li>
+</ul>
+
+<pre><code class="language-bash">brew install ktlint detekt
+</code></pre>
+
+<h3>3. Configuring Claude</h3>
+
+We need to tell Claude that "Kotlin exists" in this project.
+Open your <code>.claude/settings.json</code> (or create it if it doesn't exist) and ensure:
+
+<pre><code class="language-json">{
+  "commands": {
+    "auto_approve": ["gradle", "./gradlew", "ktlint", "kotlinc"]
+  }
+}
+</code></pre>
+
+<strong>Why?</strong>
+When MoAI runs <code>/moai:loop</code>, it will try to run <code>./gradlew test</code>. If it stops to ask for permission every time, the "Vibe" is killed.
+Whitelisting these commands allows for <strong>Autonomous Vibe Coding</strong>.
+
+---
+
+<h2>🧪 Lab: Verify Setup</h2>
+
+Run this command to check if your environment is ready:
+
+<pre><code class="language-bash">java -version && kotlin -version && gradle -version
+</code></pre>
+
+If you see versions for all three, you are ready to proceed.
+
+---
+
+<h2>⏭️ Next Step</h2>
+
+Now that the forge is hot, let's teach the brain how to hammer.
+Proceed to <strong><a href=".././Chapter_02_Language_Skill.html">Chapter 02: Teaching the Brain (<code>lang-kotlin</code>)</a></strong>.
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter_04_Vibe_Loop - MoAI Master Class</title>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            MoAI-ADK Class 🗿
+        </div>
+        <div class="sidebar-content">
+            <div class="nav-group"><div class="nav-group-title">Core Track</div>
+<a href="../../ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="../../Chapter_01_Architecture.html" class="nav-link">Chapter 01 Architecture</a>
+<a href="../../Chapter_02_Skill_Authoring.html" class="nav-link">Chapter 02 Skill Authoring</a>
+<a href="../../Chapter_03_Custom_Agents.html" class="nav-link">Chapter 03 Custom Agents</a>
+<a href="../../Chapter_04_Workflow_Mastery.html" class="nav-link">Chapter 04 Workflow Mastery</a>
+<a href="../../Chapter_05_Personalization.html" class="nav-link">Chapter 05 Personalization</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Kotlin Vibe</div>
+<a href="../../kotlin/ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="../../kotlin/Chapter_01_Setup.html" class="nav-link">Chapter 01 Setup</a>
+<a href="../../kotlin/Chapter_02_Language_Skill.html" class="nav-link">Chapter 02 Language Skill</a>
+<a href="../../kotlin/Chapter_03_Kotlin_Agent.html" class="nav-link">Chapter 03 Kotlin Agent</a>
+<a href="../../kotlin/Chapter_04_Vibe_Loop.html" class="nav-link active">Chapter 04 Vibe Loop</a>
+<a href="../../kotlin/Chapter_05_Capstone.html" class="nav-link">Chapter 05 Capstone</a>
+</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content-wrapper">
+            <h1>Chapter 04: The Vibe Loop</h1>
+
+<h2>♾️ What is the Vibe Loop?</h2>
+
+The "Vibe" in Vibe Coding comes from <strong>Fast Feedback</strong>.
+You write code, and the machine tells you <em>instantly</em> if it's good.
+
+In MoAI-ADK, the <code>/moai:loop</code> command is the engine that drives this.
+For Kotlin, we want the loop to:
+
+1.  <strong>Format</strong> the code (<code>ktlint --format</code>).
+2.  <strong>Lint</strong> for bugs (<code>detekt</code>).
+3.  <strong>Test</strong> the changes (<code>gradle test</code>).
+
+If any of these fail, the Agent captures the output and <strong>fixes the code automatically</strong>.
+
+<h2>📝 Lab: Creating the Kotlin Loop</h2>
+
+To enable this, we need to create a <strong>Project-Specific Loop Configuration</strong>.
+
+<h3>Step 1: <code>moai-loop</code> Script</h3>
+MoAI looks for a <code>scripts/loop.sh</code> (or similar) to run its quality checks.
+Create <code>scripts/kotlin-loop.sh</code>:
+
+<pre><code class="language-bash">#!/bin/bash
+&lt;h1&gt;scripts/kotlin-loop.sh&lt;/h1&gt;
+
+echo "🔍 Running Ktlint..."
+ktlint --format || exit 1
+
+echo "🔍 Running Detekt..."
+detekt || exit 1
+
+echo "🧪 Running Tests..."
+./gradlew test || exit 1
+
+echo "✅ All System Go!"
+</code></pre>
+
+Don't forget to make it executable: <code>chmod +x scripts/kotlin-loop.sh</code>
+
+<h3>Step 2: Teaching Claude to Use it</h3>
+Now, update your <code>lang-kotlin</code> skill (from Chapter 2) to include instructions about the loop.
+
+Add this to <code>.claude/skills/lang-kotlin/SKILL.md</code>:
+
+<pre><code class="language-markdown">&lt;h2&gt;The Vibe Loop&lt;/h2&gt;
+When the user asks to "fix issues" or "run the loop", ALWAYS run:
+<code>./scripts/kotlin-loop.sh</code>
+
+If it fails:
+1. Read the error output.
+2. Fix the specific file.
+3. Run it again.
+</code></pre>
+
+<h2>🏃‍♀️ Try it out</h2>
+
+1.  Intentionally break a rule (e.g., bad indentation in a <code>.kt</code> file).
+2.  Run: <code>/moai:loop</code> (or ask Claude "Run the Kotlin loop and fix errors").
+3.  Watch as Claude runs the script, sees the failure, modifies the file, and passes the test.
+
+<strong>That is the Vibe.</strong>
+
+---
+
+<h2>⏭️ Next Step</h2>
+
+The training is complete. It's time for the final exam.
+Proceed to <strong><a href=".././Chapter_05_Capstone.html">Chapter 05: Capstone - Building a Service</a></strong>.
+
+        </div>
+    </div>
+</body>
+</html>

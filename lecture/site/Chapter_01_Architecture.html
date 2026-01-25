@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter_01_Architecture - MoAI Master Class</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            MoAI-ADK Class 🗿
+        </div>
+        <div class="sidebar-content">
+            <div class="nav-group"><div class="nav-group-title">Core Track</div>
+<a href="ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="Chapter_01_Architecture.html" class="nav-link active">Chapter 01 Architecture</a>
+<a href="Chapter_02_Skill_Authoring.html" class="nav-link">Chapter 02 Skill Authoring</a>
+<a href="Chapter_03_Custom_Agents.html" class="nav-link">Chapter 03 Custom Agents</a>
+<a href="Chapter_04_Workflow_Mastery.html" class="nav-link">Chapter 04 Workflow Mastery</a>
+<a href="Chapter_05_Personalization.html" class="nav-link">Chapter 05 Personalization</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Kotlin Vibe</div>
+<a href="kotlin/ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="kotlin/Chapter_01_Setup.html" class="nav-link">Chapter 01 Setup</a>
+<a href="kotlin/Chapter_02_Language_Skill.html" class="nav-link">Chapter 02 Language Skill</a>
+<a href="kotlin/Chapter_03_Kotlin_Agent.html" class="nav-link">Chapter 03 Kotlin Agent</a>
+<a href="kotlin/Chapter_04_Vibe_Loop.html" class="nav-link">Chapter 04 Vibe Loop</a>
+<a href="kotlin/Chapter_05_Capstone.html" class="nav-link">Chapter 05 Capstone</a>
+</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content-wrapper">
+            <h1>Chapter 01: Architecture & Philosophy</h1>
+
+<h2>🏛️ What is "Agentic" Development?</h2>
+
+Welcome to the new era of coding. If traditional AI coding assistants were "Copilots" (sitting next to you, suggesting lines), <strong>MoAI-ADK</strong> is designed to build "Agents" (sitting in their own office, doing the work you assigned).
+
+<strong>Key Differences:</strong>
+<ul>
+<li><strong>Copilot</strong>: "Here is a function to calculate Fibonacci." (Function level)</li>
+<li><strong>Agent</strong>: "I have implemented the payment module, added unit tests, and updated the documentation. Please review." (Feature/Task level)</li>
+</ul>
+
+MoAI-ADK (Agent Development Kit) provides the <strong>framework</strong> to build, control, and scale these agents.
+
+---
+
+<h2>🏗️ The Anatomy of MoAI-ADK</h2>
+
+Open your project root. let's look at the key directories that make this engine run.
+
+<h3>1. <code>src/moai_adk</code> (The Engine)</h3>
+This is the core Python package that powers the CLI and the agents.
+<ul>
+<li><strong><code>cli/</code></strong>: Handles the <code>/</code> commands like <code>/moai:plan</code> or <code>/moai:loop</code>. It parses your intent and dispatches it to the right agent.</li>
+<li><strong><code>core/</code></strong>: The brain of the operation. It includes the <code>LLM</code> interface, <code>Tool</code> definitions, and <code>Context</code> management.</li>
+<li><strong><code>agentskills/</code></strong>: This is where the <strong>Skills</strong> live. Think of this as the "knowledge base" or "manuals" that agents read.</li>
+</ul>
+
+<h3>2. <code>.claude/skills</code> (The Knowledge)</h3>
+This is the most critical folder for you. It contains the <strong>Skill Definitions</strong>.
+<ul>
+<li><strong><code>SKILL.md</code></strong>: The instruction manual for a specific topic (e.g., <code>git-expert</code>, <code>react-master</code>).</li>
+<li><strong>Progressive Disclosure</strong>: Notice how skills are split? We'll cover this in Chapter 2, but essentially, it's about optimizing what the AI reads to save "brain space" (tokens).</li>
+</ul>
+
+<h3>3. <code>.moai/</code> (The Memory)</h3>
+This hidden folder acts as the <strong>Long-term Memory</strong> for your project.
+<ul>
+<li><strong><code>specs/</code></strong>: Stores the Requirements (SPEC-001, SPEC-002...).</li>
+<li><strong><code>reports/</code></strong>: Logs of what agents have done.</li>
+<li><strong><code>config/</code></strong>: Project-specific settings.</li>
+</ul>
+
+---
+
+<h2>🧠 Brain vs. Body</h2>
+
+MoAI-ADK follows a distinct separation of concerns:
+
+<h3>The Brain (Claude / LLM)</h3>
+<ul>
+<li><strong>Role</strong>: Reasoning, Planning, Decision Making.</li>
+<li><strong>Inputs</strong>: Context, Prompts, Skill Content.</li>
+<li><strong>Outputs</strong>: Tool Calls, Plans, Code.</li>
+</ul>
+
+<h3>The Body (MoAI Framework)</h3>
+<ul>
+<li><strong>Role</strong>: Execution, Sensing, interacting with the OS.</li>
+<li><strong>Components</strong>:</li>
+<li><strong>Tools</strong>: <code>read_file</code>, <code>run_command</code>, <code>git_commit</code>.</li>
+<li><strong>Sensors</strong>: File watchers, Lints, Test runners.</li>
+<li><strong>Safety</strong>: Permission checks (stopping the AI from <code>rm -rf /</code>).</li>
+</ul>
+
+---
+
+<h2>🧪 Quick Lab: Exploring the Core</h2>
+
+Let's use Claude to verify our understanding. Run the following command in your terminal (or ask Claude to do it):
+
+<pre><code class="language-bash">&lt;h1&gt;List the available skills to see "The Knowledge"&lt;/h1&gt;
+ls -F agentskills/
+</code></pre>
+
+You should see directories like <code>architect</code>, <code>coder</code>, <code>qa</code>. These represent the <strong>Specialized Agents</strong> that use the skills.
+
+---
+
+<h2>⏭️ Next Step</h2>
+
+Now that we understand the "Body" (the framework), let's learn how to teach the "Brain" new tricks.
+Proceed to <strong><a href="./Chapter_02_Skill_Authoring.html">Chapter 02: Skill Authoring & Progressive Disclosure</a></strong>.
+
+        </div>
+    </div>
+</body>
+</html>

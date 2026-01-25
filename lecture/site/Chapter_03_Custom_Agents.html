@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter_03_Custom_Agents - MoAI Master Class</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            MoAI-ADK Class 🗿
+        </div>
+        <div class="sidebar-content">
+            <div class="nav-group"><div class="nav-group-title">Core Track</div>
+<a href="ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="Chapter_01_Architecture.html" class="nav-link">Chapter 01 Architecture</a>
+<a href="Chapter_02_Skill_Authoring.html" class="nav-link">Chapter 02 Skill Authoring</a>
+<a href="Chapter_03_Custom_Agents.html" class="nav-link active">Chapter 03 Custom Agents</a>
+<a href="Chapter_04_Workflow_Mastery.html" class="nav-link">Chapter 04 Workflow Mastery</a>
+<a href="Chapter_05_Personalization.html" class="nav-link">Chapter 05 Personalization</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Kotlin Vibe</div>
+<a href="kotlin/ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="kotlin/Chapter_01_Setup.html" class="nav-link">Chapter 01 Setup</a>
+<a href="kotlin/Chapter_02_Language_Skill.html" class="nav-link">Chapter 02 Language Skill</a>
+<a href="kotlin/Chapter_03_Kotlin_Agent.html" class="nav-link">Chapter 03 Kotlin Agent</a>
+<a href="kotlin/Chapter_04_Vibe_Loop.html" class="nav-link">Chapter 04 Vibe Loop</a>
+<a href="kotlin/Chapter_05_Capstone.html" class="nav-link">Chapter 05 Capstone</a>
+</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content-wrapper">
+            <h1>Chapter 03: Custom Agents & Personas</h1>
+
+<h2>🎭 Who is "Claude"?</h2>
+
+In MoAI-ADK, "Claude" isn't just one entity. It's a <strong>hive mind</strong> of specialized agents.
+When you run a command, the <strong>Router</strong> decides which "Persona" should handle the request.
+
+<ul>
+<li><strong><code>manager-spec</code></strong>: The Planner. High-level, obsessed with requirements.</li>
+<li><strong><code>expert-backend</code></strong>: The Coder. Writes Python/Go/Java, ignores UI.</li>
+<li><strong><code>expert-frontend</code></strong>: The Designer. Cares about CSS, React, and UX.</li>
+<li><strong><code>quality-assurance</code></strong>: The Tester. Cynical, breaks things, writes tests.</li>
+</ul>
+
+<h2>🎛️ How Routing Works</h2>
+
+The system uses <strong>Triggers</strong> (just like Skills) to wake up the right agent.
+
+1.  <strong>User says</strong>: <em>"Create a new React component for the login button."</em>
+2.  <strong>Router hears</strong>: "React", "Unknown", "Component".
+3.  <strong>Action</strong>: Activates <code>expert-frontend</code> agent.
+4.  <strong>Result</strong>: The agent loads only the skills relevant to Frontend (CSS, React patterns) and ignores Backend skills (SQL, Docker).
+
+<h2>🛠️ Lab: Creating a Custom "Reviewer" Persona</h2>
+
+Let's define a new persona that is strict about code style.
+
+<h3>Step 1: Define the Persona</h3>
+In your <code>agentskills</code> or a custom skill folder, you can define a <code>persona-reviewer</code> skill.
+
+Create <code>.claude/skills/persona-reviewer/SKILL.md</code>:
+
+<pre><code class="language-yaml">---
+name: "persona-reviewer"
+description: "A strict code reviewer persona"
+triggers:
+  agents: ["reviewer"]  # &lt;-- Activates when acting as 'reviewer'
+  keywords: ["review", "critique", "audit"]
+progressive_disclosure:
+  enabled: true
+---
+
+&lt;h1&gt;🕵️ Persona: The Code Auditor&lt;/h1&gt;
+
+You are &lt;strong&gt;The Auditor&lt;/strong&gt;. You do not write code. You construct critiques.
+Your goal is to find:
+1. Security vulnerabilities.
+2. Inefficient algorithms.
+3. Bad variable names.
+
+&lt;strong&gt;Style&lt;/strong&gt;: Be direct, strict, and professional. Use "I recommend" instead of "Maybe".
+</code></pre>
+
+<h3>Step 2: Invoke the Persona</h3>
+
+Now, you can explicitly ask Claude to adopt this persona (if the Router logic allows) or simply trigger it with keywords.
+
+<strong>Try this with Claude</strong>:
+<em>"Act as The Auditor and review the <code>src/main.py</code> file."</em>
+
+Because you used the keywords ("Auditor", "review"), the <code>persona-reviewer</code> Body (Level 2) loads.
+Claude reads "You are The Auditor..." and shifts its tone immediately.
+
+<h2>🧩 The Power of "Agent + Skill"</h2>
+
+This is the formula for MoAI-ADK:
+<blockquote><strong>Agent Persona</strong> (Who I am) + <strong>Skill Knowledge</strong> (What I know) = <strong>Agentic Workflow</strong></blockquote>
+
+By mixing and matching Personas and Skills, you can build a team of virtual employees.
+
+---
+
+<h2>⏭️ Next Step</h2>
+
+You have the Brain (Architecture), the Knowledge (skills), and the Personality (Agents).
+Now, let's put them to work with <strong>Workflows</strong>.
+Proceed to <strong><a href="./Chapter_04_Workflow_Mastery.html">Chapter 04: Workflow Mastery</a></strong>.
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter_02_Skill_Authoring - MoAI Master Class</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            MoAI-ADK Class 🗿
+        </div>
+        <div class="sidebar-content">
+            <div class="nav-group"><div class="nav-group-title">Core Track</div>
+<a href="ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="Chapter_01_Architecture.html" class="nav-link">Chapter 01 Architecture</a>
+<a href="Chapter_02_Skill_Authoring.html" class="nav-link active">Chapter 02 Skill Authoring</a>
+<a href="Chapter_03_Custom_Agents.html" class="nav-link">Chapter 03 Custom Agents</a>
+<a href="Chapter_04_Workflow_Mastery.html" class="nav-link">Chapter 04 Workflow Mastery</a>
+<a href="Chapter_05_Personalization.html" class="nav-link">Chapter 05 Personalization</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Kotlin Vibe</div>
+<a href="kotlin/ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="kotlin/Chapter_01_Setup.html" class="nav-link">Chapter 01 Setup</a>
+<a href="kotlin/Chapter_02_Language_Skill.html" class="nav-link">Chapter 02 Language Skill</a>
+<a href="kotlin/Chapter_03_Kotlin_Agent.html" class="nav-link">Chapter 03 Kotlin Agent</a>
+<a href="kotlin/Chapter_04_Vibe_Loop.html" class="nav-link">Chapter 04 Vibe Loop</a>
+<a href="kotlin/Chapter_05_Capstone.html" class="nav-link">Chapter 05 Capstone</a>
+</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content-wrapper">
+            <h1>Chapter 02: Skill Authoring & Progressive Disclosure</h1>
+
+<h2>📉 The Token Problem</h2>
+
+Imagine you have 50 specialized skills (Git expert, React pro, Python guru...).
+If you load all of them into Claude's context at once:
+<ul>
+<li><strong>50 skills × 5,000 tokens</strong> = <strong>250,000 tokens</strong>.</li>
+<li><strong>Claude's Limit</strong>: ~200,000 tokens.</li>
+</ul>
+
+<strong>Result</strong>: Claude crashes or forgets everything.
+
+<h2>💡 The Solution: Progressive Disclosure</h2>
+
+MoAI-ADK uses a "Progressive Disclosure" pattern to solve this. It works like a polite conversation:
+
+1.  <strong>Level 1 (The Handshake)</strong>: "Hi, I'm the Git expert." (~100 tokens)
+<ul>
+<li>Always loaded.</li>
+<li>Contains only metadata (name, description, triggers).</li>
+</ul>
+2.  <strong>Level 2 (The Conversation)</strong>: "Here is my core knowledge." (~5,000 tokens)
+<ul>
+<li>Loaded <strong>ONLY</strong> when you mention a trigger keyword (e.g., "git pull").</li>
+</ul>
+3.  <strong>Level 3 (The Encyclopedia)</strong>: "Here are the deep details." (Unlimited)
+<ul>
+<li>External files loaded <strong>ONLY</strong> on demand.</li>
+</ul>
+
+<strong>Result</strong>: Total context usage drops from <strong>250k</strong> to <strong>~5k</strong>.
+
+---
+
+<h2>🧬 Anatomy of a SKILL.md</h2>
+
+A <code>SKILL.md</code> file is divided into two parts by the YAML Frontmatter.
+
+<h3>Level 1: The Metadata (The "Header")</h3>
+This part is <strong>always visible</strong> to the agent.
+
+<pre><code class="language-yaml">---
+name: "my-first-skill"
+description: "A tutorial skill to learn authoring."
+triggers:
+  keywords: ["tutorial", "learn"]  # &lt;-- The magic switch
+progressive_disclosure:
+  enabled: true
+  level1_tokens: ~100
+  level2_tokens: ~1000
+---
+</code></pre>
+
+<h3>Level 2: The Body (The "Content")</h3>
+Everything <em>below</em> the second <code>---</code> is hidden until triggered.
+
+<pre><code class="language-markdown">&lt;h1&gt;My First Skill Guide&lt;/h1&gt;
+
+&lt;h2&gt;Quick Reference&lt;/h2&gt;
+Do this, not that.
+
+&lt;h2&gt;Implementation&lt;/h2&gt;
+1. Step one...
+2. Step two...
+</code></pre>
+
+---
+
+<h2>🧪 Lab: Create Your First Skill</h2>
+
+Let's practice by creating a real skill in your environment.
+
+<h3>Step 1: Create the Directory</h3>
+Run this command in your terminal:
+<pre><code class="language-bash">mkdir -p .claude/skills/my-first-skill
+</code></pre>
+
+<h3>Step 2: Create the SKILL.md</h3>
+Create a file named <code>.claude/skills/my-first-skill/SKILL.md</code> with:
+
+<pre><code class="language-yaml">---
+name: "my-first-skill"
+description: "A demonstration of Progressive Disclosure"
+triggers:
+  keywords: ["demo", "flash"]
+progressive_disclosure:
+  enabled: true
+---
+
+&lt;h1&gt;Welcome to Level 2!&lt;/h1&gt;
+
+If you are reading this, the skill has been &lt;strong&gt;triggered&lt;/strong&gt;!
+You mentioned "demo" or "flash", so MoAI-ADK loaded this content.
+
+&lt;h2&gt;What to do next?&lt;/h2&gt;
+Try asking Claude: "What can you do with the flash demo?"
+</code></pre>
+
+<h3>Step 3: Test It</h3>
+
+1.  <strong>Reload configuration</strong>: Run <code>/moai:0-project</code> (or just restart Claude).
+2.  <strong>Trigger it</strong>: Say to Claude: <em>"Show me the flash demo info."</em>
+3.  <strong>Verify</strong>: use <code>grep_search</code> or just check if Claude responds with the "Welcome to Level 2!" text.
+
+---
+
+<h2>⏭️ Next Step</h2>
+
+Now that you can teach Claude new skills, let's see how to give it a personality.
+Proceed to <strong><a href="./Chapter_03_Custom_Agents.html">Chapter 03: Custom Agents & Personas</a></strong>.
+
+        </div>
+    </div>
+</body>
+</html>

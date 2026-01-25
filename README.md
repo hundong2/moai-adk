@@ -64,6 +64,12 @@ moai glm YOUR_API_KEY
 ---
 
 > **📚 For detailed information, see the official online documentation:** [https://adk.mo.ai.kr](https://adk.mo.ai.kr)
+>
+> **🎓 MoAI-ADK Master Class**:
+> Check out the **[Lecture Series](./lecture/ROADMAP.md)** to master Agentic Workflow.
+> A detailed curriculum from Architecture to Kotlin Vibe Coding is available.
+>
+> **🌐 Lecture Website**: Open `lecture/site/ROADMAP.html` in your browser for the best experience.
 
 ## 1. 30-Second Installation
 

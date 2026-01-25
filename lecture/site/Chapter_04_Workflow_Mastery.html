@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter_04_Workflow_Mastery - MoAI Master Class</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            MoAI-ADK Class 🗿
+        </div>
+        <div class="sidebar-content">
+            <div class="nav-group"><div class="nav-group-title">Core Track</div>
+<a href="ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="Chapter_01_Architecture.html" class="nav-link">Chapter 01 Architecture</a>
+<a href="Chapter_02_Skill_Authoring.html" class="nav-link">Chapter 02 Skill Authoring</a>
+<a href="Chapter_03_Custom_Agents.html" class="nav-link">Chapter 03 Custom Agents</a>
+<a href="Chapter_04_Workflow_Mastery.html" class="nav-link active">Chapter 04 Workflow Mastery</a>
+<a href="Chapter_05_Personalization.html" class="nav-link">Chapter 05 Personalization</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Kotlin Vibe</div>
+<a href="kotlin/ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="kotlin/Chapter_01_Setup.html" class="nav-link">Chapter 01 Setup</a>
+<a href="kotlin/Chapter_02_Language_Skill.html" class="nav-link">Chapter 02 Language Skill</a>
+<a href="kotlin/Chapter_03_Kotlin_Agent.html" class="nav-link">Chapter 03 Kotlin Agent</a>
+<a href="kotlin/Chapter_04_Vibe_Loop.html" class="nav-link">Chapter 04 Vibe Loop</a>
+<a href="kotlin/Chapter_05_Capstone.html" class="nav-link">Chapter 05 Capstone</a>
+</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content-wrapper">
+            <h1>Chapter 04: Workflow Mastery</h1>
+
+<h2>🔄 The Golden Cycle: Plan, Run, Sync</h2>
+
+Mastering MoAI-ADK means mastering the <strong>Spec-First Domain-Driven Design (DDD)</strong> cycle.
+
+<h3>1. The PLAN Phase (<code>/moai:plan</code>)</h3>
+<strong>"Don't write code until you know what to build."</strong>
+
+<ul>
+<li><strong>Command</strong>: <code>/moai:1-plan "Add a user profile page"</code></li>
+<li><strong>Agent</strong>: <code>manager-spec</code></li>
+<li><strong>Output</strong>: A <code>SPEC-00X.md</code> file using EARS syntax.</li>
+<li><strong>Why</strong>: It aligns the "Brain" on the requirements before a single line of code is written.</li>
+</ul>
+
+<h3>2. The RUN Phase (<code>/moai:run</code>)</h3>
+<strong>"Implement the plan, preserving the domain."</strong>
+
+<ul>
+<li><strong>Command</strong>: <code>/moai:2-run SPEC-001</code></li>
+<li><strong>Agent</strong>: <code>expert-maker</code> (or specialized experts)</li>
+<li><strong>Output</strong>: Code changes, tests.</li>
+<li><strong>Philosophy</strong>:</li>
+<li><strong>Analyze</strong>: Check existing code.</li>
+<li><strong>Preserve</strong>: Don't break existing features.</li>
+<li><strong>Improve</strong>: Add the new feature.</li>
+</ul>
+
+<h3>3. The SYNC Phase (<code>/moai:sync</code>)</h3>
+<strong>"If it's not documented, it doesn't exist."</strong>
+
+<ul>
+<li><strong>Command</strong>: <code>/moai:3-sync SPEC-001</code></li>
+<li><strong>Agent</strong>: <code>manager-docs</code></li>
+<li><strong>Output</strong>: Updated <code>README.md</code>, API docs, diagrams, and a Git Commit.</li>
+</ul>
+
+---
+
+<h2>🎩 Meet Alfred: The Autonomous Agent</h2>
+
+Sometimes you don't want to hold the AI's hand. Enter <strong>Alfred</strong>.
+
+<ul>
+<li><strong>Command</strong>: <code>/moai:alfred "Fix the login bug"</code></li>
+<li><strong>What it does</strong>:</li>
+</ul>
+    1.  <strong>Explores</strong> the codebase to find the issue.
+    2.  Creates a <strong>Plan</strong> (internally).
+    3.  <strong>Fixes</strong> the code.
+    4.  <strong>Verifies</strong> with tests.
+    5.  <strong>Repeats</strong> until done.
+
+<strong>When to use</strong>: For bug fixes, small refactors, or well-defined isolated tasks.
+
+---
+
+<h2>♾️ The Loop: Self-Healing Code</h2>
+
+The <code>/moai:loop</code> command is your safety net.
+
+<ul>
+<li><strong>Command</strong>: <code>/moai:loop</code></li>
+<li><strong>What it does</strong>:</li>
+<li>Runs <strong>Lints</strong> (Ruff, ESLint).</li>
+<li>Runs <strong>Tests</strong> (Pytest, Jest).</li>
+<li>Runs <strong>Type Checks</strong>.</li>
+<li>If anything fails, it <strong>Fixes it</strong> and runs again.</li>
+<li><strong>Use case</strong>: Run this after you (or the AI) make messy edits. It polishes the code until it shines.</li>
+</ul>
+
+---
+
+<h2>⏭️ Next Step</h2>
+
+You are now a master of the workflow. The final step is making this system <em>yours</em>.
+Proceed to <strong><a href="./Chapter_05_Personalization.html">Chapter 05: Personalization & "My Brain"</a></strong>.
+
+        </div>
+    </div>
+</body>
+</html>

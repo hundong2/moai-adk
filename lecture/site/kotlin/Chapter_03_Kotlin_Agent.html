@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter_03_Kotlin_Agent - MoAI Master Class</title>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            MoAI-ADK Class 🗿
+        </div>
+        <div class="sidebar-content">
+            <div class="nav-group"><div class="nav-group-title">Core Track</div>
+<a href="../../ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="../../Chapter_01_Architecture.html" class="nav-link">Chapter 01 Architecture</a>
+<a href="../../Chapter_02_Skill_Authoring.html" class="nav-link">Chapter 02 Skill Authoring</a>
+<a href="../../Chapter_03_Custom_Agents.html" class="nav-link">Chapter 03 Custom Agents</a>
+<a href="../../Chapter_04_Workflow_Mastery.html" class="nav-link">Chapter 04 Workflow Mastery</a>
+<a href="../../Chapter_05_Personalization.html" class="nav-link">Chapter 05 Personalization</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Kotlin Vibe</div>
+<a href="../../kotlin/ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="../../kotlin/Chapter_01_Setup.html" class="nav-link">Chapter 01 Setup</a>
+<a href="../../kotlin/Chapter_02_Language_Skill.html" class="nav-link">Chapter 02 Language Skill</a>
+<a href="../../kotlin/Chapter_03_Kotlin_Agent.html" class="nav-link active">Chapter 03 Kotlin Agent</a>
+<a href="../../kotlin/Chapter_04_Vibe_Loop.html" class="nav-link">Chapter 04 Vibe Loop</a>
+<a href="../../kotlin/Chapter_05_Capstone.html" class="nav-link">Chapter 05 Capstone</a>
+</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content-wrapper">
+            <h1>Chapter 03: The Kotlin Expert Persona</h1>
+
+<h2>🎭 Why a Specialized Agent?</h2>
+
+The general <code>expert-maker</code> agent is great for Python and JS. But for Kotlin, we want someone who:
+1.  Knows <strong>Ktor</strong> and <strong>Spring Boot</strong>.
+2.  Knows how to debug <strong>Gradle</strong> dependency hell.
+3.  Cares about <strong>Null Safety</strong>.
+
+We will create a persona called <code>expert-kotlin</code>.
+
+<h2>📝 Lab: Birth of an Agent</h2>
+
+<h3>Step 1: Create the Agent Directory</h3>
+In MoAI-ADK, agents are just skills with a specific structure.
+
+<pre><code class="language-bash">mkdir -p .claude/skills/expert-kotlin
+</code></pre>
+
+<h3>Step 2: The Persona Definition</h3>
+Create <code>.claude/skills/expert-kotlin/SKILL.md</code>:
+
+<pre><code class="language-yaml">---
+name: "expert-kotlin"
+description: "A Senior Kotlin Backend Engineer Persona"
+triggers:
+  # This agent wakes up when we talk about Kotlin backend tasks
+  keywords: ["ktor", "spring boot", "jvm backend"]
+progressive_disclosure:
+  enabled: true
+---
+
+&lt;h1&gt;🕵️ Persona: The JVM Architect&lt;/h1&gt;
+
+You are a Senior Kotlin Engineer. You value:
+<ul>
+<li>&lt;strong&gt;Type Safety&lt;/strong&gt;: If it compiles, it works.</li>
+<li>&lt;strong&gt;Immutability&lt;/strong&gt;: <code>val</code> over <code>var</code>.</li>
+<li>&lt;strong&gt;Clean Architecture&lt;/strong&gt;: Domain &gt; Data &gt; Presentation.</li>
+</ul>
+
+&lt;h2&gt;Your Toolkit&lt;/h2&gt;
+
+When you are active, you should prioritize these libraries:
+<ul>
+<li>&lt;strong&gt;Web&lt;/strong&gt;: Ktor (Server)</li>
+<li>&lt;strong&gt;DI&lt;/strong&gt;: Koin</li>
+<li>&lt;strong&gt;Test&lt;/strong&gt;: Kotest + Mockk</li>
+<li>&lt;strong&gt;DB&lt;/strong&gt;: Exposed (SQL DSL)</li>
+</ul>
+
+&lt;h2&gt;Response Style&lt;/h2&gt;
+<ul>
+<li>Provide full, compilable code blocks.</li>
+<li>Always include import statements.</li>
+<li>Suggest "Kotlin" ways to do things (e.g. <code>apply</code>, <code>let</code>, <code>also</code>).</li>
+</ul>
+</code></pre>
+
+<h3>Step 3: Testing the Persona</h3>
+
+1.  Reload your configuration (<code>/moai:0-project</code> or restart).
+2.  Ask Claude: <em>"Act as expert-kotlin and design a User data class for a Ktor app."</em>
+3.  Verify: It should suggest <code>data class User(...)</code> and maybe mention Ktor serialization.
+
+<h2>🧠 The Magic</h2>
+By combining <strong>Chapter 2 (Language Skill)</strong> and <strong>Chapter 3 (Persona)</strong>, you have created a powerful specialist.
+<ul>
+<li><code>lang-kotlin</code> provides the <strong>syntax</strong> rules.</li>
+<li><code>expert-kotlin</code> provides the <strong>architectural</strong> opinions.</li>
+</ul>
+
+---
+
+<h2>⏭️ Next Step</h2>
+
+You have the tools and the worker. Now let's set up the factory line.
+Proceed to <strong><a href=".././Chapter_04_Vibe_Loop.html">Chapter 04: The Vibe Loop (TDD)</a></strong>.
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter_02_Language_Skill - MoAI Master Class</title>
+    <link rel="stylesheet" href="../../assets/style.css">
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            MoAI-ADK Class 🗿
+        </div>
+        <div class="sidebar-content">
+            <div class="nav-group"><div class="nav-group-title">Core Track</div>
+<a href="../../ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="../../Chapter_01_Architecture.html" class="nav-link">Chapter 01 Architecture</a>
+<a href="../../Chapter_02_Skill_Authoring.html" class="nav-link">Chapter 02 Skill Authoring</a>
+<a href="../../Chapter_03_Custom_Agents.html" class="nav-link">Chapter 03 Custom Agents</a>
+<a href="../../Chapter_04_Workflow_Mastery.html" class="nav-link">Chapter 04 Workflow Mastery</a>
+<a href="../../Chapter_05_Personalization.html" class="nav-link">Chapter 05 Personalization</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Kotlin Vibe</div>
+<a href="../../kotlin/ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="../../kotlin/Chapter_01_Setup.html" class="nav-link">Chapter 01 Setup</a>
+<a href="../../kotlin/Chapter_02_Language_Skill.html" class="nav-link active">Chapter 02 Language Skill</a>
+<a href="../../kotlin/Chapter_03_Kotlin_Agent.html" class="nav-link">Chapter 03 Kotlin Agent</a>
+<a href="../../kotlin/Chapter_04_Vibe_Loop.html" class="nav-link">Chapter 04 Vibe Loop</a>
+<a href="../../kotlin/Chapter_05_Capstone.html" class="nav-link">Chapter 05 Capstone</a>
+</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content-wrapper">
+            <h1>Chapter 02: Teaching the Brain (<code>lang-kotlin</code>)</h1>
+
+<h2>🧠 What Makes a "Language Skill"?</h2>
+
+A language skill isn't a text book. It's a <strong>Cheat Sheet</strong> for the AI.
+Claude already knows Kotlin syntax (mostly). What it <em>doesn't</em> know is:
+
+1.  <strong>Your Version</strong>: Are you using Kotlin 1.9 or 2.0?
+2.  <strong>Your Libraries</strong>: Ktor or Spring? Arrow or standard lib?
+3.  <strong>Your Idioms</strong>: Do you prefer <code>runCatching</code> or <code>try-catch</code>?
+
+We need to create a <code>lang-kotlin</code> skill to align Claude with your preferences.
+
+<h2>📝 Lab: Create <code>agentskills/lang-kotlin</code></h2>
+
+<h3>Step 1: The Structure</h3>
+Run:
+<pre><code class="language-bash">mkdir -p .claude/skills/lang-kotlin
+</code></pre>
+
+<h3>Step 2: The <code>SKILL.md</code></h3>
+Create <code>.claude/skills/lang-kotlin/SKILL.md</code>:
+
+<pre><code class="language-yaml">---
+name: "lang-kotlin"
+description: "Expert knowledge of Kotlin 2.0 and Coroutines"
+triggers:
+  keywords: ["kotlin", ".kt", "gradle.kts"]
+  languages: ["kotlin"]
+progressive_disclosure:
+  enabled: true
+  level1_tokens: ~100
+  level2_tokens: ~2000
+---
+
+&lt;h1&gt;Kotlin Expert Guidelines&lt;/h1&gt;
+
+&lt;h2&gt;Quick Reference&lt;/h2&gt;
+<ul>
+<li>&lt;strong&gt;Version&lt;/strong&gt;: Kotlin 2.0</li>
+<li>&lt;strong&gt;Build&lt;/strong&gt;: Gradle Kotlin DSL</li>
+<li>&lt;strong&gt;Style&lt;/strong&gt;: Ktlint standard</li>
+</ul>
+
+&lt;h2&gt;Idioms to Follow&lt;/h2&gt;
+
+&lt;h3&gt;1. Expressions over Statements&lt;/h3&gt;
+&lt;strong&gt;YES&lt;/strong&gt;:
+</code></pre>kotlin
+val status = if (isValid) "OK" else "FAIL"
+<pre><code class="language-">&lt;strong&gt;NO&lt;/strong&gt;:
+</code></pre>kotlin
+var status = ""
+if (isValid) { status = "OK" } else { status = "FAIL" }
+<pre><code class="language-">
+&lt;h3&gt;2. Coroutines&lt;/h3&gt;
+Always expose <code>suspend</code> functions for I/O.
+Use <code>Flow</code> for streams, not RxJava.
+
+&lt;h3&gt;3. Null Safety&lt;/h3&gt;
+Never use <code>!!</code>. Use <code>?.</code> or <code>?:</code> or <code>requireNotNull()</code>.
+
+</code></pre>kotlin
+val name = user?.name ?: "Guest"
+<pre><code class="language-">
+&lt;h3&gt;4. Testing&lt;/h3&gt;
+Use Kotest style assertions if available, or JUnit 5.
+</code></pre>kotlin
+assertThat(result).isEqualTo(expected)
+<pre><code class="language-"></code></pre>
+
+<h2>🎓 Why This Matters</h2>
+
+When you save this file, every time you open a <code>.kt</code> file, MoAI will inject these rules into Claude's brain.
+You will never have to say "Don't use <code>!!</code> please" again.
+
+---
+
+<h2>⏭️ Next Step</h2>
+
+We taught the brain <em>how</em> to write Kotlin. Now let's define <em>who</em> writes it.
+Proceed to <strong><a href=".././Chapter_03_Kotlin_Agent.html">Chapter 03: The Kotlin Expert Persona</a></strong>.
+
+        </div>
+    </div>
+</body>
+</html>

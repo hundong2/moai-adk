@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter_05_Personalization - MoAI Master Class</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- Mermaid for diagrams -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            MoAI-ADK Class 🗿
+        </div>
+        <div class="sidebar-content">
+            <div class="nav-group"><div class="nav-group-title">Core Track</div>
+<a href="ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="Chapter_01_Architecture.html" class="nav-link">Chapter 01 Architecture</a>
+<a href="Chapter_02_Skill_Authoring.html" class="nav-link">Chapter 02 Skill Authoring</a>
+<a href="Chapter_03_Custom_Agents.html" class="nav-link">Chapter 03 Custom Agents</a>
+<a href="Chapter_04_Workflow_Mastery.html" class="nav-link">Chapter 04 Workflow Mastery</a>
+<a href="Chapter_05_Personalization.html" class="nav-link active">Chapter 05 Personalization</a>
+</div>
+<div class="nav-group"><div class="nav-group-title">Kotlin Vibe</div>
+<a href="kotlin/ROADMAP.html" class="nav-link">ROADMAP</a>
+<a href="kotlin/Chapter_01_Setup.html" class="nav-link">Chapter 01 Setup</a>
+<a href="kotlin/Chapter_02_Language_Skill.html" class="nav-link">Chapter 02 Language Skill</a>
+<a href="kotlin/Chapter_03_Kotlin_Agent.html" class="nav-link">Chapter 03 Kotlin Agent</a>
+<a href="kotlin/Chapter_04_Vibe_Loop.html" class="nav-link">Chapter 04 Vibe Loop</a>
+<a href="kotlin/Chapter_05_Capstone.html" class="nav-link">Chapter 05 Capstone</a>
+</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content-wrapper">
+            <h1>Chapter 05: Personalization & "My Brain"</h1>
+
+<h2>🧠 Making MoAI Your Own</h2>
+
+MoAI-ADK is powerful out of the box, but it shines when you inject your own DNA into it.
+This final chapter teaches you how to customize the "Brain" and the "Body".
+
+<h3>1. Customizing <code>.claude/settings.json</code></h3>
+
+This file controls the global behavior of your agent.
+
+<pre><code class="language-json">{
+  "commands": {
+    "auto_approve": ["ls", "grep"]  // Commands safe to run without asking
+  },
+  "nlu": {
+    "locale": "ko-KR" // Force Korean responses
+  }
+}
+</code></pre>
+
+<strong>Tip</strong>: Use this to whitelist trusted commands or change the default language.
+
+<h3>2. The Power of Git Hooks</h3>
+
+MoAI-ADK comes with strict quality gates.
+Check <code>scripts/check-hooks.sh</code>. These hooks ensure that <strong>YOU</strong> (and the AI) don't commit bad code.
+
+<ul>
+<li><strong>pre-commit</strong>: Runs linting and simple checks.</li>
+<li><strong>pre-push</strong>: Runs the full <code>pytest</code> suite.</li>
+</ul>
+
+To enable them:
+<pre><code class="language-bash">./scripts/install-hooks.sh
+</code></pre>
+
+<h3>3. Injecting "My Brain" (Knowledge Graph)</h3>
+
+You can add your own engineering principles to the system.
+
+1.  Create a folder <code>.claude/skills/my-principles</code>.
+2.  Add a <code>SKILL.md</code> with:
+    <pre><code class="language-yaml">    triggers:
+      keywords: ["design", "architecture"]
+    </code></pre>
+3.  Add your rules:
+<ul>
+<li>"Always use functional components."</li>
+<li>"Never use <code>any</code> type in TypeScript."</li>
+</ul>
+
+Now, whenever you discuss design, Claude will respect <strong>YOUR</strong> rules.
+
+---
+
+<h2>🎓 Graduation</h2>
+
+Congratulations! You have completed the <strong>MoAI-ADK Master Class</strong>.
+
+<h3>Checklist</h3>
+<ul>
+<li>☐ You understand the <strong>Agentic Architecture</strong>.</li>
+<li>☐ You can author <strong>Skills with Progressive Disclosure</strong>.</li>
+<li>☐ You can create <strong>Custom Personas</strong>.</li>
+<li>☐ You have mastered the <strong>Plan-Run-Sync</strong> loop.</li>
+<li>☐ You have personalized the system.</li>
+</ul>
+
+<strong>What's Next?</strong>
+Start building! The best way to learn is to code.
+Use <code>/moai:alfred</code> to build something crazy.
+
+<strong>Good luck, Architect.</strong>
+
+        </div>
+    </div>
+</body>
+</html>
